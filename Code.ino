@@ -128,16 +128,6 @@ void setup(){
 
 }
 
-
-
-
-
-
-
-
-
-
-
 void loop(){
 
   if (Gesture.getResult(result)) {
@@ -210,12 +200,6 @@ void loop(){
 
 }
 
-
-
-
-
-
-
 // This function is used to edit the local time
 void editLocalTime(){
 
@@ -239,13 +223,6 @@ void editLocalTime(){
   }
 
 }
-
-
-
-
-
-
-
 
 // This function is used to display the local time
 void localTimeMode(){
@@ -274,12 +251,6 @@ void localTimeMode(){
   }
 
 }
-
-
-
-
-
-
 
 // This function is used to set alarms
 void alarmMode() {
@@ -448,10 +419,6 @@ void alarmMode() {
 
 }
 
-
-
-
-
 // This function is used to display the world clock
 void worldClockMode() {
 
@@ -528,12 +495,6 @@ void worldClockMode() {
 
 }
 
-
-
-
-
-
-
 // This function is used to display the weather
 void weatherMode() {
 
@@ -557,14 +518,6 @@ void weatherMode() {
 
 }
 
-
-
-
-
-
-
-
-
 // This function is used to update time of other locations
 void updateWorldTime (int loopDelay) {
 
@@ -579,14 +532,6 @@ void updateWorldTime (int loopDelay) {
   }
 
 }
-
-
-
-
-
-
-
-
 
 // This function is used to turn on the alarm buzzer
 void turnOnAlarm() {
@@ -622,14 +567,6 @@ void turnOnAlarm() {
 
 }
 
-
-
-
-
-
-
-
-
 // This function is used to fetch time from the internet
 String getTimeFromApi(int index) {
 
@@ -662,15 +599,6 @@ String getTimeFromApi(int index) {
   }
 
 }
-
-
-
-
-
-
-
-
-
 
 // This function is used to set the local time
 void setLocalTime(){
@@ -730,9 +658,6 @@ void setLocalTime(){
 
 }
 
-
-
-
 // This function is used to set the local time in the ESP's memory
 void setTime(String dateTime) {
 
@@ -743,11 +668,6 @@ void setTime(String dateTime) {
   settimeofday(&now, NULL);
 
 }
-
-
-
-
-
 
 // This function is used to get the local time from the ESP's memory
 String getTime() {
@@ -761,13 +681,6 @@ String getTime() {
   return String(timeStr);
 
 }
-
-
-
-
-
-
-
 
 // This function is used to get the gesture from the sensor
 void getGesture(const pag7660_gesture_t& result) {
