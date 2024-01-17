@@ -540,6 +540,7 @@ void turnOnAlarm() {
 
   lcd.setCursor(9, 1);
   lcd.print("Alarm");
+  lcd.backlight();
   
   while (!gesture.equals(alarmOffGesture)) {
 
