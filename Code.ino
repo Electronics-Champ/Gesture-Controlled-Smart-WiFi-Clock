@@ -565,6 +565,7 @@ void turnOnAlarm() {
 
   digitalWrite(21, LOW);
   digitalWrite(D2, LOW);
+  lcd.noBacklight();
 
 }
 
