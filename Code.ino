@@ -134,36 +134,36 @@ void loop(){
     getGesture(result);
   }
 
-  if (gesture.equals("left") && clockMode < 4) {
+  if (gesture.equalsIgnoreCase("left") && clockMode < 4) {
     clockMode++;
     gesture = "";
     sound();
   }
-  else if (gesture.equals("left") && clockMode == 4){
+  else if (gesture.equalsIgnoreCase("left") && clockMode == 4){
     clockMode = 0;
     gesture = "";
     sound();
   }
 
-  if (gesture.equals("right") && clockMode > 0) {
+  if (gesture.equalsIgnoreCase("right") && clockMode > 0) {
     clockMode--;
     gesture = "";
     sound();
   }
-  else if (gesture.equals("right") && clockMode == 0){
+  else if (gesture.equalsIgnoreCase("right") && clockMode == 0){
     clockMode = 4;
     gesture = "";
     sound();
   }
 
-  if (gesture.equals(toggleBacklightGesture)) {
+  if (gesture.equalsIgnoreCase(toggleBacklightGesture)) {
     backlightOn = !backlightOn;
     backlightOn ? lcd.backlight() : lcd.noBacklight();
     gesture = "";
     sound();
   }
 
-  if (gesture.equals(toggleSilentModeGesture) && silentMillis+3000 < millis()) {
+  if (gesture.equalsIgnoreCase(toggleSilentModeGesture) && silentMillis+3000 < millis()) {
     silent = !silent;
     lcd.clear();
     lcd.setCursor(0, 0);
@@ -176,7 +176,7 @@ void loop(){
     sound();
     silentMillis = millis();
   }
-  else if (gesture.equals(toggleSilentModeGesture)){
+  else if (gesture.equalsIgnoreCase(toggleSilentModeGesture)){
     gesture = "";
   }
 
@@ -213,7 +213,7 @@ void editLocalTime(){
       getGesture(result);
     }
 
-    if (gesture.equals(enterExitModeGesture)) {
+    if (gesture.equalsIgnoreCase(enterExitModeGesture)) {
       sound();
       lcd.clear();
       gesture = "";
@@ -271,27 +271,27 @@ void alarmMode() {
       getGesture(result);
     }
 
-    if (gesture.equals("left")) {
+    if (gesture.equalsIgnoreCase("left")) {
       clockMode = 2;
       gesture = "";
       sound();
       break;
     }
 
-    else if (gesture.equals("right")) {
+    else if (gesture.equalsIgnoreCase("right")) {
       clockMode = 0;
       gesture = "";
       sound();
       break;
     }
 
-    else if (gesture.equals(enterExitModeGesture)) { 
+    else if (gesture.equalsIgnoreCase(enterExitModeGesture)) { 
 
       gesture = "";
       sound();
       delay(1000);
 
-      while (!gesture.equals(enterExitModeGesture)){
+      while (!gesture.equalsIgnoreCase(enterExitModeGesture)){
 
         delay(200);
 
@@ -299,7 +299,7 @@ void alarmMode() {
           getGesture(result);
         }
 
-        if (gesture.equals("left") || gesture.equals("right")){
+        if (gesture.equalsIgnoreCase("left") || gesture.equalsIgnoreCase("right")){
           alarmStatus = !alarmStatus;
           gesture = "";
           sound();
@@ -317,7 +317,7 @@ void alarmMode() {
       gesture = "";
       delay(1000);
 
-      while (!gesture.equals(enterExitModeGesture) && alarmStatus){
+      while (!gesture.equalsIgnoreCase(enterExitModeGesture) && alarmStatus){
         
         gesture = "";
 
@@ -334,7 +334,7 @@ void alarmMode() {
 
         byte delayTime = 100;
 
-        if (gesture.equals("cw")){
+        if (gesture.equalsIgnoreCase("cw")){
           gesture = "";
           if (settingAlarm == 0){
             alarmHour++;
@@ -354,7 +354,7 @@ void alarmMode() {
           }
           gesture = "";
         }
-        else if (gesture.equals("ccw")){
+        else if (gesture.equalsIgnoreCase("ccw")){
           gesture = "";
           if (settingAlarm == 0){
             alarmHour--;
@@ -377,12 +377,12 @@ void alarmMode() {
         
         delay(200);
 
-        if (gesture.equals("left")) {
+        if (gesture.equalsIgnoreCase("left")) {
           settingAlarm = 1;
           gesture = "";
           sound();
         }
-        else if (gesture.equals("right")) {
+        else if (gesture.equalsIgnoreCase("right")) {
           settingAlarm = 0;
           gesture = "";
           sound();
@@ -432,13 +432,13 @@ void worldClockMode() {
       getGesture(result);
     }
 
-    if (gesture.equals(enterExitModeGesture)) {
+    if (gesture.equalsIgnoreCase(enterExitModeGesture)) {
       
       gesture = "";
       sound();
       delay(500);
 
-      while (!gesture.equals(enterExitModeGesture)) {
+      while (!gesture.equalsIgnoreCase(enterExitModeGesture)) {
 
         if (timeHour == alarmHour && timeMin == alarmMin && alarmStatus){
           turnOnAlarm();
@@ -450,7 +450,7 @@ void worldClockMode() {
           getGesture(result);
         }
 
-        if (gesture.equals("right")){
+        if (gesture.equalsIgnoreCase("right")){
           timeZoneIndex--;
           gesture = "";
           if (timeZoneIndex < 0)
@@ -459,7 +459,7 @@ void worldClockMode() {
           sound();
         } 
 
-        else if (gesture.equals("left")){
+        else if (gesture.equalsIgnoreCase("left")){
           timeZoneIndex++;
           gesture = "";
           if (timeZoneIndex > 22)
@@ -542,7 +542,7 @@ void turnOnAlarm() {
   lcd.print("Alarm");
   lcd.backlight();
   
-  while (!gesture.equals(alarmOffGesture)) {
+  while (!gesture.equalsIgnoreCase(alarmOffGesture)) {
 
     gesture = "";
     
@@ -613,20 +613,20 @@ void setLocalTime(){
   delay(3000);
   lcd.clear();
 
-  while (!gesture.equals(enterExitModeGesture)) {
+  while (!gesture.equalsIgnoreCase(enterExitModeGesture)) {
 
     if (Gesture.getResult(result)) {
       getGesture(result);
     }
 
-    if (gesture.equals("right")){
+    if (gesture.equalsIgnoreCase("right")){
       timeZoneIndex--;
       sound();
       gesture = "";
       if (timeZoneIndex < 0)
         timeZoneIndex = 22;
     } 
-    else if (gesture.equals("left")){
+    else if (gesture.equalsIgnoreCase("left")){
       timeZoneIndex++;
       sound();
       gesture = "";
